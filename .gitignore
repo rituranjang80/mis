@@ -8,3 +8,5 @@ somefile.log
 /CartoonGenerate/toonize-main/.venv2/
 /CartoonGenerate/toonize-main/.venv2/
 /CartoonGenerate/toonize-main/.venv2/Lib/site-packages/annotated_doc/__init__.py
+/.venv/
+/Harfiles/.venv/
