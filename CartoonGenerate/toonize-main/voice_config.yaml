@@ -1,0 +1,45 @@
+# Voice transformation settings (no reference WAV required by default).
+# Edit this file to control how video audio is changed.
+
+voice:
+  # Apply voice change when processing videos
+  enabled: true
+
+  # auto = synthesize a target voice from built-in OpenVoice speakers
+  # file = use reference_file below (optional manual override)
+  mode: auto
+
+  # Only used when mode: file
+  reference_file: null
+
+  # Base speaker pack: EN or ZH (must match downloaded checkpoints)
+  language: Hindi
+
+  # Built-in style: default, friendly, cheerful, excited, sad, angry,
+  # terrified, shouting, whispering — or "random" to pick from speakers_pool
+  speaker_style: friendly
+
+  # Speech rate for auto-generated reference clip (0.5–1.5 typical)
+  speed: 1.0
+
+  # Text spoken to build the synthetic target voice (keep 1–3 short sentences)
+  reference_text: >
+    Hello. This is an automatically generated human voice sample used to
+    transform the cartoon video audio into a different speaker.
+
+  # Used when speaker_style is "random"
+  speakers_pool:
+    - default
+    - friendly
+    - cheerful
+    - excited
+    - sad
+    - angry
+    - whispering
+
+  # Set an integer for reproducible random speaker selection, or null
+  random_seed: null
+
+  # Audio extraction / conversion
+  sample_rate: 24000
+  vad: true

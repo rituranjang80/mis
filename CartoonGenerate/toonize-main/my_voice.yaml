@@ -1,0 +1,20 @@
+# Custom voice profile — used with:
+#   python toonize.py c.mp4 --config my_voice.yaml
+
+voice:
+  enabled: true
+  mode: auto
+  language: EN
+  speaker_style: cheerful
+  speed: 1.0
+  reference_text: >
+    Hello. This is an automatically generated human voice used to transform
+    the cartoon video audio into a different speaker.
+  speakers_pool:
+    - default
+    - friendly
+    - cheerful
+    - excited
+  random_seed: null
+  sample_rate: 24000
+  vad: true
