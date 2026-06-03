@@ -2,6 +2,8 @@
 /.venv/
 *.pyc
 *.mp4
+*.pth
+*.log
 error_log.txt
 error_log.txt
 somefile.log
@@ -10,3 +12,10 @@ somefile.log
 /CartoonGenerate/toonize-main/.venv2/Lib/site-packages/annotated_doc/__init__.py
 /.venv/
 /Harfiles/.venv/
+# AI Models
+*.pth
+*.pt
+*.bin
+*.onnx
+*.ckpt
+*.safetensors
