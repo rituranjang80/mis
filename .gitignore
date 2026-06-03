@@ -19,3 +19,7 @@ somefile.log
 *.onnx
 *.ckpt
 *.safetensors
+CartoonGenerate/toonize-main/checkpoints/
+*.pth
+/CartoonGenerate/toonize-main/checkpoints/
+*.pth
