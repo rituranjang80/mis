@@ -23,3 +23,7 @@ CartoonGenerate/toonize-main/checkpoints/
 *.pth
 /CartoonGenerate/toonize-main/checkpoints/
 *.pth
+*.har
+Harfiles/
+*.har
+/Harfiles/har_files/
