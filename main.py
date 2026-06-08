@@ -202,6 +202,8 @@ if 'torch' in sys.modules:
 
 
 import comfy.utils
+if os.name == "nt":
+    comfy.utils.set_progress_bar_enabled(False)
 
 import execution
 import server
