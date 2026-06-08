@@ -12,7 +12,7 @@ somefile.log
 /CartoonGenerate
 /toonize-main/.venv2/Lib/site-packages/annotated_doc/__init__.py
 /.venv/
-/Harfiles/.venv/
+/Harfiles-data/.venv/
 # AI Models
 *.pth
 *.pt
@@ -28,4 +28,3 @@ CartoonGenerate/toonize-main/checkpoints/
 
 *.har
 
-/Harfiles\har_files\har_2_6_2025
