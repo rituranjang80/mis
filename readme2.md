@@ -12,13 +12,14 @@ This guide explains how to install, configure, and run ComfyUI on **Windows** fo
 4. [Folder Structure](#folder-structure)
 5. [Download Models](#download-models)
 6. [Run ComfyUI](#run-comfyui)
-7. [Generate Images](#generate-images)
-8. [Install Video Nodes](#install-video-nodes)
-9. [Generate Small Videos](#generate-small-videos)
-10. [Lion Play With Girl Video Workflow](#lion-play-with-girl-video-workflow)
-11. [Recommended Settings](#recommended-settings)
-12. [Install More Models & Nodes](#install-more-models--nodes)
-13. [Troubleshooting](#troubleshooting)
+7. [Run with Docker (Windows & Linux)](#run-with-docker-windows--linux)
+8. [Generate Images](#generate-images)
+9. [Install Video Nodes](#install-video-nodes)
+10. [Generate Small Videos](#generate-small-videos)
+11. [Lion Play With Girl Video Workflow](#lion-play-with-girl-video-workflow)
+12. [Recommended Settings](#recommended-settings)
+13. [Install More Models & Nodes](#install-more-models--nodes)
+14. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -284,6 +285,88 @@ Press `Ctrl + C` in the terminal window, or close the command prompt window.
 | `--listen 127.0.0.1` | Only allow local access (safer) |
 | `--port 8188` | Web UI port (default) |
 | `--enable-manager` | Enable built-in node manager (required for missing-node install prompts) |
+
+---
+
+## Run with Docker (Windows & Linux)
+
+Use Docker when you want the same setup on **Windows** and **Linux** without installing Python locally.
+
+### Prerequisites
+
+| Requirement | Notes |
+|-------------|-------|
+| **Docker Desktop** (Windows) or **Docker Engine** (Linux) | https://docs.docker.com/get-docker/ |
+| **Docker Compose v2** | Included with Docker Desktop |
+| **Disk space** | ~8 GB for image + models |
+| **RAM** | 16 GB recommended for CPU mode |
+
+### Quick start (Docker)
+
+**Windows** — double-click:
+
+```
+run_docker.bat
+```
+
+**Linux / macOS** — in terminal:
+
+```bash
+chmod +x run_docker.sh download_models_docker.sh
+./run_docker.sh
+```
+
+**First time only** — download models (~4.5 GB):
+
+| OS | Command |
+|----|---------|
+| Windows | `download_models_docker.bat` |
+| Linux | `./download_models_docker.sh` |
+
+Or manually:
+
+```bash
+docker compose --profile setup run --rm download-models
+```
+
+Open: **http://127.0.0.1:8188**
+
+### Docker commands
+
+| Action | Command |
+|--------|---------|
+| Start | `docker compose up -d --build` |
+| Stop | `docker compose down` |
+| View logs | `docker compose logs -f comfyui` |
+| Restart | `docker compose restart comfyui` |
+
+### What is persisted
+
+These host folders are mounted into the container:
+
+| Folder | Purpose |
+|--------|---------|
+| `models/` | Checkpoints, VAE, AnimateDiff weights |
+| `input/` | Input images/videos |
+| `output/` | Generated images and videos |
+| `user/` | Workflows, settings, ComfyUI Manager config |
+
+Video nodes (AnimateDiff, VideoHelperSuite, Manager) are baked into the Docker image.
+
+### GPU mode (optional, NVIDIA only)
+
+If the machine has an NVIDIA GPU and the NVIDIA Container Toolkit is installed:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d --build
+```
+
+### Docker vs local Python
+
+| Method | Best for |
+|--------|----------|
+| `run_comfyui.bat` | Windows laptop without Docker |
+| `run_docker.bat` / `run_docker.sh` | Same setup on Windows and Linux servers |
 
 ---
 

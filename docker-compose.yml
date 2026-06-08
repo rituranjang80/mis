@@ -1,0 +1,33 @@
+services:
+  comfyui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        TORCH_VARIANT: cpu
+    image: comfyui-local:cpu
+    container_name: comfyui
+    ports:
+      - "${COMFYUI_HOST_PORT:-8188}:8188"
+    volumes:
+      - ./models:/app/models
+      - ./input:/app/input
+      - ./output:/app/output
+      - ./user:/app/user
+    environment:
+      COMFYUI_CPU: "1"
+      COMFYUI_EXTRA_ARGS: ""
+      TQDM_DISABLE: "1"
+    restart: unless-stopped
+
+  download-models:
+    profiles: ["setup"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        TORCH_VARIANT: cpu
+    image: comfyui-local:cpu
+    volumes:
+      - ./models:/app/models
+    command: ["python", "download_models.py"]

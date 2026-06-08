@@ -1,0 +1,16 @@
+# Optional GPU override. Requires NVIDIA Container Toolkit (Linux) or
+# Docker Desktop with WSL2 + NVIDIA support (Windows).
+#
+# Usage:
+#   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d --build
+
+services:
+  comfyui:
+    build:
+      args:
+        TORCH_VARIANT: cuda
+    image: comfyui-local:gpu
+    environment:
+      COMFYUI_CPU: "0"
+      COMFYUI_EXTRA_ARGS: "--preview-method auto"
+    gpus: all
