@@ -13,7 +13,7 @@ voice:
   reference_file: null
 
   # Base speaker pack: EN or ZH (must match downloaded checkpoints)
-  language: Hindi
+  language: EN
 
   # Built-in style: default, friendly, cheerful, excited, sad, angry,
   # terrified, shouting, whispering — or "random" to pick from speakers_pool

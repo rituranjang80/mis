@@ -35,6 +35,11 @@ Write-Host "`n=== Voice libraries (OpenVoice runtime) ===" -ForegroundColor Cyan
 Write-Host "`n=== OpenVoice (no-deps) ===" -ForegroundColor Cyan
 & $Py -m pip install --no-deps git+https://github.com/myshell-ai/OpenVoice.git
 
+Write-Host "`n=== API server (FastAPI + Swagger) ===" -ForegroundColor Cyan
+& $Py -m pip install "fastapi>=0.110,<1" "uvicorn[standard]>=0.27,<1" "python-multipart>=0.0.9,<1"
+
 Write-Host "`nDone. Next:" -ForegroundColor Green
+Write-Host "  python setup_models.py"
 Write-Host "  python setup_voice.py"
 Write-Host "  python toonize.py c.mp4 --config my_voice.yaml"
+Write-Host "  uvicorn api.main:app --host 0.0.0.0 --port 8000"

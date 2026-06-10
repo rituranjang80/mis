@@ -30,3 +30,8 @@ cn2an==0.5.22
 jieba==0.42.1
 more-itertools>=10.0.0
 # OpenVoice installed by install.py with --no-deps (avoids numpy==1.22.0 downgrade)
+
+# --- API (Swagger via FastAPI) ---
+fastapi>=0.110,<1
+uvicorn[standard]>=0.27,<1
+python-multipart>=0.0.9,<1

@@ -105,9 +105,21 @@ def main():
         "OpenVoice (no-deps — keeps TensorFlow numpy)",
     )
 
+    run(
+        pip
+        + [
+            "fastapi>=0.110,<1",
+            "uvicorn[standard]>=0.27,<1",
+            "python-multipart>=0.0.9,<1",
+        ],
+        "API server (FastAPI + Swagger)",
+    )
+
     print("\nDone. Next:")
+    print("  python setup_models.py")
     print("  python setup_voice.py")
     print("  python toonize.py c.mp4 --config my_voice.yaml")
+    print("  uvicorn api.main:app --host 0.0.0.0 --port 8000")
 
 
 if __name__ == "__main__":
