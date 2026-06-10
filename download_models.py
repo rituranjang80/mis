@@ -9,10 +9,12 @@ BASE = Path(__file__).resolve().parent
 CHECKPOINTS = BASE / "models" / "checkpoints"
 VAE = BASE / "models" / "vae"
 ANIMATEDIFF = BASE / "models" / "animatediff_models"
+BG_REMOVAL = BASE / "models" / "background_removal"
 
 CHECKPOINTS.mkdir(parents=True, exist_ok=True)
 VAE.mkdir(parents=True, exist_ok=True)
 ANIMATEDIFF.mkdir(parents=True, exist_ok=True)
+BG_REMOVAL.mkdir(parents=True, exist_ok=True)
 
 
 def download(repo_id: str, filename: str, local_dir: Path, label: str) -> None:
@@ -56,10 +58,19 @@ def main() -> None:
         "AnimateDiff motion model (SD 1.5)",
     )
 
+    # BiRefNet for background removal (keeps same person in composite workflows)
+    download(
+        "Comfy-Org/BiRefNet",
+        "background_removal/birefnet.safetensors",
+        BASE / "models",
+        "BiRefNet background removal",
+    )
+
     print("\nAll starter models ready.")
-    print(f"  Checkpoints:   {CHECKPOINTS}")
-    print(f"  VAE:           {VAE}")
-    print(f"  AnimateDiff:   {ANIMATEDIFF}")
+    print(f"  Checkpoints:        {CHECKPOINTS}")
+    print(f"  VAE:                {VAE}")
+    print(f"  AnimateDiff:        {ANIMATEDIFF}")
+    print(f"  Background removal: {BG_REMOVAL}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: comfyui-config
+  namespace: comfyui
+  labels:
+    app.kubernetes.io/name: comfyui
+data:
+  COMFYUI_LISTEN: "0.0.0.0"
+  COMFYUI_PORT: "8188"
+  COMFYUI_CPU: "1"
+  COMFYUI_EXTRA_ARGS: "--preview-method none --preview-size 256 --enable-manager"
+  TQDM_DISABLE: "1"
+  PYTHONUNBUFFERED: "1"

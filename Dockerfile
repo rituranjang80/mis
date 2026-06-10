@@ -35,7 +35,11 @@ RUN if [ "$TORCH_VARIANT" = "cpu" ]; then \
 RUN mkdir -p custom_nodes \
     && git clone --depth 1 https://github.com/ltdrdata/ComfyUI-Manager.git custom_nodes/ComfyUI-Manager \
     && git clone --depth 1 https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git custom_nodes/ComfyUI-AnimateDiff-Evolved \
-    && git clone --depth 1 https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git custom_nodes/ComfyUI-VideoHelperSuite
+    && git clone --depth 1 https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git custom_nodes/ComfyUI-VideoHelperSuite \
+    && git clone --depth 1 https://github.com/Gourieff/ComfyUI-ReActor.git custom_nodes/ComfyUI-ReActor
+
+RUN pip install --no-cache-dir -r custom_nodes/ComfyUI-ReActor/requirements.txt onnxruntime \
+    && python custom_nodes/ComfyUI-ReActor/install.py
 
 COPY . .
 
